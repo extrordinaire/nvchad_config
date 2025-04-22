@@ -1,9 +1,12 @@
-**This repo is supposed to used as config by NvChad users!**
-
-- The main nvchad repo (NvChad/NvChad) is used as a plugin by this repo.
-- So you just import its modules , like `require "nvchad.options" , require "nvchad.mappings"`
-- So you can delete the .git from this repo ( when you clone it locally ) or fork it :)
-
-# Credits
-
-1) Lazyvim starter https://github.com/LazyVim/starter as nvchad's starter was inspired by Lazyvim's . It made a lot of things easier!
+```
+           _                     _ _             _          _     
+  _____  _| |_ _ __ ___  _ __ __| (_)_ __   __ _(_)_ __ ___( )___ 
+ / _ \ \/ / __| '__/ _ \| '__/ _` | | '_ \ / _` | | '__/ _ \// __|
+|  __/>  <| |_| | | (_) | | | (_| | | | | | (_| | | | |  __/ \__ \
+ \___/_/\_\\__|_|  \___/|_|_ \__,_|_|_| |_|\__,_|_|_|  \___| |___/
+ ___ _   _ _ __   ___ _ __| |__        _ ____   _(_)_ __ ___      
+/ __| | | | '_ \ / _ \ '__| '_ \ _____| '_ \ \ / / | '_ ` _ \     
+\__ \ |_| | |_) |  __/ |  | |_) |_____| | | \ V /| | | | | | |    
+|___/\__,_| .__/ \___|_|  |_.__/      |_| |_|\_/ |_|_| |_| |_|    
+          |_|                                                     
+```
