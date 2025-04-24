@@ -19,6 +19,7 @@ return {
       ensure_installed = {
         "vim", "lua", "vimdoc",
         "html", "css", "markdown",
+        "verilog",
       },
     },
     config = function(_, opts)
@@ -96,43 +97,28 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    -- these options get passed straight into nvim-tree.setup()
-    opts = {
-      view                               = {
-        side  = "right",
-        width = 30,
-      },
-      hijack_netrw                       = true,
-      hijack_unnamed_buffer_when_opening = false,
-      hijack_directories                 = { enable = true, auto_open = true },
-      sync_root_with_cwd                 = true,
-      respect_buf_cwd                    = true,
-      update_focused_file                = {
-        enable      = true,
-        update_root = { enable = true },
-      },
-      actions                            = {
-        change_dir = {
-          enable = true,
-          global = true,
-        },
-      },
-    },
     -- run this after the plugin is loaded
     config = function(_, opts)
       -- apply all the opts
-      require("nvim-tree").setup(opts)
-
-      -- if you called `nvim <dir>`, cd into it and open the tree
-      vim.api.nvim_create_autocmd("VimEnter", {
-        callback = function()
-          local args = vim.fn.argv()
-          if #args == 1 and vim.fn.isdirectory(args[1]) == 1 then
-            vim.cmd.cd(args[1])
-            vim.cmd("NvimTreeOpen")
-          end
-        end,
+      require("nvim-tree").setup({
+        view    = {
+          side  = "right",
+          width = 30,
+        },
+        actions = {
+          open_file = {
+            quit_on_open = true,
+          },
+        },
       })
+
+      if vim.fn.argc() == 1 then
+        local arg = vim.fn.argv(0)
+        if vim.fn.isdirectory(arg) == 1 then
+          vim.cmd.cd(arg)
+          require("nvim-tree.api").tree.open()
+        end
+      end
     end,
   },
 

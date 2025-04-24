@@ -15,7 +15,15 @@ vim.g.clipboard = {
   cache_enabled = 0,
 }
 
--- vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
+
+vim.filetype.add({
+  extension = {
+    sv  = "systemverilog",
+    svh = "systemverilog",
+  },
+})
+
 
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!

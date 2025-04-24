@@ -11,7 +11,10 @@ local servers = {
   "rust_analyzer",
   "eslint",
   "ts_ls",
-  "tailwindcss"
+  "tailwindcss",
+  -- "verible",
+  "svlangserver",
+  -- "svls",
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 
@@ -79,7 +82,7 @@ lspconfig.volar.setup({
     end
 
     -- Stop tsserver if it's active
-    for _, other_client in pairs(vim.lsp.get_clients({bufnr = bufnr})) do
+    for _, other_client in pairs(vim.lsp.get_clients({ bufnr = bufnr })) do
       if other_client.name == 'ts_ls' then
         other_client.stop()
       end
@@ -89,17 +92,38 @@ lspconfig.volar.setup({
   capabilities = nvlsp.capabilities,
 })
 
+-- lspconfig.svls.setup({
+--   filetypes = { "systemverilog", "verilog" },
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   --optionally point to your project-level .svls.toml :contentReference[oaicite:4]{index=4}
+--   -- settings = {
+--   --   verilog = {
+--   --     include_paths = { "src/header", "lib" },
+--   --     defines       = { "SYNTHESIS", "DEBUG=1" },
+--   --     plugins       = {},
+--   --   },
+--   --   option = { linter = true },
+--   -- },
+--   cmd = { "svls" },
+-- })
+
+-- lspconfig.svlangserver.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = require("cmp_nvim_lsp").default_capabilities(nvlsp.capabilities),
+-- }
 
 -- Set up the LSP handler for signature help
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   vim.lsp.handlers.signature_help,
   {
-    border = "rounded",  -- Optional: adds a rounded border to the floating window
-    focusable = false,   -- Prevents the window from stealing focus
-    max_width = 80,      -- Optional: sets the maximum width of the window
-    max_height = 12,     -- Optional: sets the maximum height of the window
-    wrap = true,         -- Optional: enables text wrapping within the window
+    border = "rounded", -- Optional: adds a rounded border to the floating window
+    focusable = false,  -- Prevents the window from stealing focus
+    max_width = 80,     -- Optional: sets the maximum width of the window
+    max_height = 12,    -- Optional: sets the maximum height of the window
+    wrap = true,        -- Optional: enables text wrapping within the window
   }
 )
 
-vim.lsp.enable(servers)
+-- vim.lsp.enable(servers)
