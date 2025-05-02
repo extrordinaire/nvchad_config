@@ -12,6 +12,7 @@ local servers = {
   "eslint",
   "ts_ls",
   "tailwindcss",
+  "jdtls",
   -- "verible",
   "svlangserver",
   -- "svls",
@@ -69,7 +70,13 @@ lspconfig.emmet_language_server.setup({
 
 
 lspconfig.volar.setup({
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  filetypes = {
+    -- 'typescript',
+    -- 'javascript',
+    -- 'javascriptreact',
+    -- 'typescriptreact',
+    'vue'
+  },
   init_options = {
     vue = {
       hybridMode = false, -- disables hybrid mode for full takeover

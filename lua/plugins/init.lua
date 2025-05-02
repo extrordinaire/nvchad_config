@@ -19,7 +19,7 @@ return {
       ensure_installed = {
         "vim", "lua", "vimdoc",
         "html", "css", "markdown",
-        "verilog",
+        "verilog", "java",
       },
     },
     config = function(_, opts)
@@ -120,6 +120,11 @@ return {
         end
       end
     end,
+  },
+
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" },
   },
 
   -- test new blink
